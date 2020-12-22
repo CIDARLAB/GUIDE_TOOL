@@ -1,0 +1,61 @@
+Solenoid 0: 15,4
+Solenoid 1: 9,3
+Solenoid 2: 5
+Solenoid 3: 13,16,14
+Solenoid 4: 1
+Solenoid 5: 10
+Solenoid 6: 11
+Solenoid 7: 12
+Solenoid 8: 2,6,7,8,2,6,7,8
+
+Mode: 3, Chosen Ports: 13,15,18
+3-Filling in the reservoirs with no operation to bring anything to any inlets (only reservoirs), followed by cleaning of needed
+Valve on: 5,4,13,15,16,14
+Solenoid 0: on 
+Solenoid 1: off 
+Solenoid 2: on 
+Solenoid 3: on 
+Solenoid 4: off 
+Solenoid 5: off 
+Solenoid 6: off 
+Solenoid 7: off 
+Solenoid 8: off 
+
+Mode: 4, Chosen Ports: 13,15,18
+4-Cleaning of all main channels after reservoir filling
+Valve on: 15,9,3,4
+Solenoid 0: on 
+Solenoid 1: on 
+Solenoid 2: off 
+Solenoid 3: off 
+Solenoid 4: off 
+Solenoid 5: off 
+Solenoid 6: off 
+Solenoid 7: off 
+Solenoid 8: off 
+
+Mode: 2, Chosen Ports: 13,15,18
+2-Cleaning of all main channels and the reservoir after cell loading
+Valve on: 5,15,9,12,3,10,11,4
+Solenoid 0: on 
+Solenoid 1: on 
+Solenoid 2: on 
+Solenoid 3: off 
+Solenoid 4: off 
+Solenoid 5: on 
+Solenoid 6: on 
+Solenoid 7: on 
+Solenoid 8: off 
+
+Mode: 5, Chosen Ports: 13,15,18
+5-Both inlets of a MCM receive media from the reservoirs independent and simultaneously with MUX closed
+Valve on: 12,10,11,1
+Solenoid 0: off 
+Solenoid 1: off 
+Solenoid 2: off 
+Solenoid 3: off 
+Solenoid 4: on 
+Solenoid 5: on 
+Solenoid 6: on 
+Solenoid 7: on 
+Solenoid 8: off 

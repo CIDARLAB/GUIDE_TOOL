@@ -1,0 +1,38 @@
+*{
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+td,th{
+    background-color: lightcyan;
+	color: #111;
+    padding: 5px 10px 5px 10px;
+    border-radius: 0.2em;
+    text-align: center;
+    cursor: default;
+	font-size: 25px;
+}
+#positionShow{
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+#step1,#step2,#step3,#step4,#step5{
+	z-index: 10;
+}
+
+.input{
+	width: 300px;
+}
+#port4{
+	width: 160px;
+}
+#check2{
+	width: 50px;
+}
+#checklist{
+	width: 200px;
+}
