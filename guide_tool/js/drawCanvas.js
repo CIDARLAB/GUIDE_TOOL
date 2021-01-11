@@ -98,6 +98,7 @@ function new_grapgh()
 {
     var c=document.getElementById("myCanvas");
     var ctx=c.getContext("2d");
+	c.height=c.height;
 	// using the analysed arrays to draw graph
 	if (ctrl_info.length == 0)	splite_json();
 	draw_bk(ctx,flow_info,1,"blue","red");

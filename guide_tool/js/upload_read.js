@@ -1,6 +1,7 @@
 function splite_json(){
 	var components = info.components;
 	var features = info.features;
+	
 	var a = read_data(features, 0, ["Port", "Via", "Valve3D", "DiamondReactionChamber", "Pump3D"],flow_info);
 	var b = read_data(features, 1, ["Valve3D_control", "Port", "Pump3D_control"], ctrl_info);
 	return a.concat(b);
@@ -107,6 +108,8 @@ function getObjectValues(object)
 function read() {
 	var f=document.getElementById('file').files[0];
 	var r= new FileReader();
+	point_path = [], ctrl_info = [], flow_info = [], last_outport = [], last_point = [], path_ctrl_info = [], index_ctrl_port = [],info=[], elements_num = [];
+	valve_c=[], valve=[], pump=[], pump_c=[], port=[], port_c=[], via=[], chamber = [];
 	r.onload=function() {
 		info = JSON.parse(this.result);
 		// elements in array: flow: index_port, index_pump, index_valve, index_via, index_chamber, repeat once for control.

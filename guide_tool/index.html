@@ -12,6 +12,7 @@
 	<script type = "text/javascript" src = "js/drawCanvas.js"></script>
 	<script type = "text/javascript" src = "js/pointchoose.js"></script>
 	<script type = "text/javascript" src = "js/content-change.js"></script>
+	<script type = "text/javascript" src = "js/mode_rules.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/sidebar.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>uF guide tool</title>
@@ -124,20 +125,38 @@
 			<div id="step3" style="display: none;">
 				<h1>Step 3</h1>
 				<h3>Checkout for examples of operation modes you can play, then click next to asssign IDs to your system</h3>
-				<br>
 				<div style="width:450px; margin-left: 10px; float:left; display: inline-block;">
-					<h2>Modes Descriptions</h2>
+					<h3>Modes Descriptions</h3>
 					<br>
-				    <h4 id="modes_introduction">
-						0-Priming MCs, MCMs, MFMs and ALL Channels of the Board using MIX<br><br>
-				        1-Loading cells in each inlet independently from MUX<br><br>
-				        2-Cleaning of all main channels and the reservoir after cell loading<br><br>
-				        3-Filling in the reservoirs with no operation to bring anything to any inlets (only reservoirs), followed by cleaning of needed<br><br>
-				        4-Cleaning of all main channels after reservoir filling<br><br>
-				        5-Both inlets of a MCM receive media from the reservoirs independent and simultaneously with MUX closed<br><br>
-				        6-Feeding inlets from reservoirs stopped, then reservoirs receive media from MUX one at the time for re-filing<br><br>
-				        7-Final cleaning of all channels after experiments are gone, and MCMs are removed. (Open all of the valves)<br><br>
-				    </h4>
+				    <div id="modes_introduction">
+						<div id="mode-0">
+							<a id="mode-des-0" class="mode-des" onclick="description_change(0)">0-Priming MCs, MCMs, MFMs and ALL Channels of the Board using MIX</a>
+						</div>
+						<div id="mode-1">
+							<a id="mode-des-1" class="mode-des" onclick="description_change(1)">1-Loading cells in each inlet independently from MUX</a>
+						</div>
+						<div id="mode-2">
+							<a id="mode-des-2" class="mode-des"  onclick="description_change(2)">2-Cleaning of all main channels and the reservoir after cell loading</a>
+						</div>
+						<div id="mode-3"><a id="mode-des-3" class="mode-des" onclick="description_change(3)">3-Filling in the reservoirs with no operation to bring anything to any inlets (only reservoirs), followed by cleaning of needed
+						</a></div>
+						<div id="mode-4">
+							<a id="mode-des-4" class="mode-des" onclick="description_change(4)">4-Cleaning of all main channels after reservoir filling</a>
+						</div>
+						<div id="mode-5">
+							<a id="mode-des-5" class="mode-des" onclick="description_change(5)">
+								5-Both inlets of a MCM receive media from the reservoirs independent and simultaneously with MUX closed
+							</a>				
+						</div>
+						<div id="mode-6">
+							<a id="mode-des-6" class="mode-des" onclick="description_change(6)">
+								6-Feeding inlets from reservoirs stopped, then reservoirs receive media from MUX one at the time for re-filing</a>
+						</div>
+						<div id="mode-7">
+							<a id="mode-des-7" class="mode-des"  onclick="description_change(7)">7-Final cleaning of all channels after experiments are gone, and MCMs are removed. (Open all of the valves)</a>
+						</div>
+						<br>
+					</div>
 					<button class="mode" id="mode3_0" onclick="mode_color_3(0);mode_sample(0)">0</button>
 					<button class="mode" id="mode3_1" onclick="mode_color_3(1);mode_sample(1)">1</button>
 					<button class="mode" id="mode3_2" onclick="mode_color_3(2);mode_sample(2)">2</button>
