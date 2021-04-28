@@ -12,13 +12,19 @@
 	<script type = "text/javascript" src = "js/drawCanvas.js"></script>
 	<script type = "text/javascript" src = "js/pointchoose.js"></script>
 	<script type = "text/javascript" src = "js/content-change.js"></script>
+	<script type = "text/javascript" src = "js/solenoids_merge.js"></script>
 	<script type = "text/javascript" src = "js/mode_rules.js"></script>
+	<script type = "text/javascript" src = "js/default_set.js"></script>
+	<script type = "text/javascript" src = "js/customize_draw.js"></script>
+	<script type = "text/javascript" src = "js/component_list.js"></script>
+	<script type = "text/javascript" src = "js/inlet_choose.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="css/sidebar.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>uF guide tool</title>
 </head>
 <body>
-	<!--侧栏界面设计-->
+	<!--sidebar-->
 	<div id="mySidenav" class="sidenav">
 	  <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
 	  <button class="button" id="side1" style="color: #111111;" onclick="hide();show(1);color(1)">Step 1</button>
@@ -44,38 +50,9 @@
 						<th style="padding:5px 10px;">Type of Elements</th>
 						<th style="padding:5px 10px;">Numbers</th>
 					</tr>
-					<tr> 
-						<td> <h4>Port</h4> </td> 
-						<td> <h4 id="size1">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <h4>Pump</h4> </td> 
-						<td> <h4 id="size2">0</h4> </td>
-					</tr>
-					<tr> 
-						<td> <h4>Valve</h4> </td> 
-						<td> <h4 id="size3">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <h4>Via</h4> </td> 
-						<td> <h4 id="size4">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <h4>Chamber</h4> </td> 
-						<td> <h4 id="size5">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <h4>Port_control</h4> </td> 
-						<td> <h4 id="size6">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <h4>Pump_control</h4> </td> 
-						<td> <h4 id="size7">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <h4>Valve_control</h4> </td> 
-						<td> <h4 id="size8">0</h4> </td>
-					</tr>
+					<tbody id="tb1">
+						
+					</tbody>
 				</table>
 				<!-- <button class="button" onclick="">Draw Now!</button> -->
 			</div>
@@ -88,38 +65,8 @@
 						<th style="padding:5px 10px;">Types of Elements</th>
 						<th style="padding:5px 10px;">Numbers</th>
 					</tr>
-					<tr>
-						<td> <button class="button" id="port2" onclick="color_points(1)">Port</button> </td> 
-						<td> <h4 id="num1">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <button class="button" id="pump2" onclick="color_points(2)">Pump</button> </td> 
-						<td> <h4 id="num2">0</h4> </td>
-					</tr>
-					<tr> 
-						<td> <button class="button" id="valve2" onclick="color_points(3)">Valve</button> </td> 
-						<td> <h4 id="num3">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <button class="button" id="via2" onclick="color_points(4)">Via</button> </td> 
-						<td> <h4 id="num4">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <button class="button" id="chamber2" onclick="color_points(5)">Chamber</button> </td> 
-						<td> <h4 id="num5">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <button class="button" id="port_c2" onclick="color_points(6)">Port_control</button> </td> 
-						<td> <h4 id="num6">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <button class="button" id="pump_c2" onclick="color_points(7)">Pump_control</button> </td> 
-						<td> <h4 id="num7">0</h4> </td>
-					</tr>
-					<tr>
-						<td> <button class="button" id="valve_c2" onclick="color_points(8)">Valve_control</button> </td> 
-						<td> <h4 id="num8">0</h4> </td>
-					</tr>
+					<tbody id="tb2"></tbody>
+					
 				</table>
 			</div>
 			<div id="step3" style="display: none;">
@@ -173,7 +120,7 @@
 				<h3>Choose inlets and outlets. Check what the path looks like.</h3>
 				<h4 id="inlet">Inlets: </h4>
 				<h4 id="outlet">Outlets: </h4>
-				<button onclick="color_points(1)" class="button" id="choose" style="float: left; margin-right: 20px;"> Choose points</button>
+				<button onclick="color_points(index_port)" class="button" id="choose" style="float: left; margin-right: 20px;"> Choose points</button>
 				<table border="1" align="center" id="element_types" style="margin-bottom: 20px;">
 					<tr>
 						<th>Port Id</th>
@@ -207,6 +154,7 @@
 						<th>Mode id</th>
 						<th>Chosen ports</th>
 					</tr>
+					<!-- tb4-2 is in mode_op -->
 					<tbody id="tb4-2">
 						
 					</tbody>
@@ -244,10 +192,11 @@
 				</table>
 				<button class="button" id="dload" onclick="downloadTxt('control_solenoids.txt',index_ctrl_port)">Download Current Path</button>
 			</div>
+
 			<button class="button" id="next" onclick="hide();next_show();color(step)">Next</button>
 		</div>
-		<div style="position: relative; float: left; left: 50px;">
-			<canvas id="myCanvas" width="1280px" height="850px" style="background: #dddddd; border:1px solid #aaaaaa; " onclick="choosepoint();add_row()"></canvas>
+		<div style="position: relative; float: left; left: 30px;">
+			<canvas id="myCanvas" width="1280px" height="850px" style="background: #dddddd; border:1px solid #aaaaaa; " onclick="choosepoint();add_row();add_inlet()"></canvas>
 		</div>	
 	</div>
 
