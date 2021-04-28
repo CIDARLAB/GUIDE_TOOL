@@ -151,7 +151,6 @@ function new_grapgh()
 }
 
 function splite_json(){
-	var components = info.components;
 	var features = info.features;
 	var a = read_data(features, 0, ["Port", "Via", "Valve3D", "DiamondReactionChamber", "Pump3D"],flow_info);
 	var b = read_data(features, 1, ["Valve3D_control", "Port", "Pump3D_control"], ctrl_info);

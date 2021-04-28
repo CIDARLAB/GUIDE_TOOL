@@ -7,6 +7,7 @@ function downloadTxt(fileName) {
     for (var i =0; i<mode_a.length; i++){
 		message += "\n" +"Mode: " + mode_a[i] + ", Chosen Ports: " + ports_select[i] + "\n";
 		message += mode_description[mode_a[i]];
+		if (mode_description[mode_a[i]].indexOf("\n")<0) message += "\n";
 		message += "Valve on: " + solenoids_each_mode[i] + "\n";
 		var switch_s = on_off(solenoid_set,solenoids_each_mode[i]);
 		for (var j = 0; j <solenoid_set.length; j++){

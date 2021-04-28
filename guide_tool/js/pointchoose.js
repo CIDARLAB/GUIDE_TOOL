@@ -1,5 +1,6 @@
 var point_new = 0;
-function choosepoint(){
+var valve_new = 0;
+function choosepoint(s = "Port"){
     var objTop = getOffsetTop(document.getElementById("myCanvas"));
     var objLeft = getOffsetLeft(document.getElementById("myCanvas"));
 
@@ -12,23 +13,52 @@ function choosepoint(){
     clickObjPosition = objX + "," + objY;
     // alert_word = "Position: " + clickObjPosition;
     // alert(alert_word);
+	
+	var min = 100000000;
+	var min_id = 0;
+	var min_position;
+	var distance = 0;
+	var min_type;
+	if (is_customize == 0) {
+		for(var i=0; i<flow_info.length; i++){
+		    if (flow_info[i].type ==s) {
+				console.log(s, flow_info[i]);
+				if (objX < 0 || objY < 0 || objX > 1280 || objY > 850) continue;
+		        distance = Math.abs(objX - flow_info[i].position[0]/100) + Math.abs(objY - flow_info[i].position[1]/100);
+		        if (distance < min){
+		            min = distance;
+		            min_id = flow_info[i].id;
+		            min_position = flow_info[i].position;
+		            min_type = flow_info[i].type;
+		        }
+		    }
+		}
+	}
+	else{
+		s = "Port_control";
+		var cport = [];
+		for(var i=0; i<ctrl_info.length; i++){
+		    if (ctrl_info[i].type ==s) {
+				if (objX < 0 || objY < 0 || objX > 1280 || objY > 850) continue;
+		        distance = Math.abs(objX - ctrl_info[i].position[0]/100) + Math.abs(objY - ctrl_info[i].position[1]/100);
+		        if (distance < min){
+		            min = distance;
+		            min_id = ctrl_info[i].id;
+		            min_position = ctrl_info[i].position;
+		            min_type = ctrl_info[i].type;
+					cport = ctrl_info[i];
+		        }
+		    }
+		}
+		var c=document.getElementById("myCanvas");
+		var ctx=c.getContext("2d");
+		console.log(cport);
+		draw_bk(ctx, cport,2,"white","white", 1);
+	}
 
-    var min = 100000000;
-    var min_id = 0;
-    var min_position;
-    var distance = 0;
-    var min_type;
-    for(var i=0; i<flow_info.length; i++){
-        if (flow_info[i].type =="Port") {
-            distance = Math.abs(objX - flow_info[i].position[0]/100) + Math.abs(objY - flow_info[i].position[1]/100);
-            if (distance < min){
-                min = distance;
-                min_id = flow_info[i].id;
-                min_position = flow_info[i].position;
-                min_type = flow_info[i].type;
-            }
-        }
-    }
+	
+    
+	console.log(min_id);
     if (min_id!=0 && point_path.indexOf(min_id) <0){
 		point_path[point_path.length] = min_id ;
 		point_new = 1;

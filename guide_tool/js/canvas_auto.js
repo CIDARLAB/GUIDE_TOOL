@@ -86,7 +86,7 @@ function searchPath(path_info, channel_flow, block_valve, via_valve, mid_valve, 
                 }
                 // if (t == 4 && level == 2) console.log(channel_flow[j],path_info[t]);
                 // next may be a valve
-                if (channel_flow[j].type == "Valve3D" || channel_flow[j].type == "Valve3D_control" || channel_flow[j].type == "Port") {
+                if (channel_flow[j].type == "Valve3D" || channel_flow[j].type == "Valve3D_control" || channel_flow[j].type == "Port" || channel_flow[j].type == "Port_control") {
 
                     // judge channel_flow[j] is in the block array
                     if (block_valve.indexOf(channel_flow[j].id) != -1 || chamber_valve.indexOf(channel_flow[j].id) != -1 ||
@@ -189,7 +189,7 @@ function searchPath(path_info, channel_flow, block_valve, via_valve, mid_valve, 
                 }
 
                 // next may be a diamond
-                if (channel_flow[j].type == "DiamondReactionChamber") {
+                if (channel_flow[j].type == "DiamondReactionChamber" ) {
                     if (path_info[t].direct == 1) {
                         var start = channel_flow[j].position[1] - channel_flow[j].len/2;
                         var end = channel_flow[j].position[1] + channel_flow[j].len/2;
@@ -203,10 +203,12 @@ function searchPath(path_info, channel_flow, block_valve, via_valve, mid_valve, 
                         }
                     }else continue;
                 }
+				
+				
             }
 
             // last path may be a valve
-            else if (path_info[t].type == "Valve3D"||path_info[t].type == "Valve3D_control" || path_info[t].type == "Port"){
+            else if (path_info[t].type == "Valve3D"||path_info[t].type == "Valve3D_control" || path_info[t].type == "Port" || path_info[t].type == "Port_control"){
 
 				// next may be a line
 				if (channel_flow[j].type == "RoundedChannel") {

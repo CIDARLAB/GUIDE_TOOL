@@ -10,19 +10,6 @@ var mode_description = ["0-Priming MCs, MCMs, MFMs and ALL Channels of the Board
 	"5-Both inlets of a MCM receive media from the reservoirs independent and simultaneously with MUX closed\n" ,
 	"6-Feeding inlets from reservoirs stopped, then reservoirs receive media from MUX one at the time for re-filing\n" ,
 	"7-Final cleaning of all channels after experiments are gone, and MCMs are removed. (Open all of the valves)\n"];
-	
-function mode_sample(i){
-	switch(i){
-		case 1: point_path=[17,14,23]; break;
-		case 2: point_path=[2,10]; break;
-		case 3: point_path=[12,14,23]; break;
-		case 4: point_path=[2,10]; break;
-		case 6: point_path=[15,13,23]; break;
-		case 7: point_path=[]; break;
-		case 0: point_path=[]; break;
-	}
-	newCanvas(i);
-}
 
 function mode_color(i){
 
@@ -31,6 +18,8 @@ function mode_color(i){
 	var obj = document.getElementById("step4");
 	mode_switch[i -	1] = (mode_switch[i - 1]+1) % 2;
 	modei.style.color = color_str[mode_switch[i - 1]];
+	
+	if (mode_new.indexOf(i)!=-1) return;
 	
 	if (mode_switch[i -	1]==0){
 		var index = mode_a.indexOf(i);
@@ -89,13 +78,14 @@ function canvas_mode(){
 		i++;
 	}
 }
-
+// add new operation into the operation list, an operation consists of inlet/outlet/mode
 function addlist(){
 	for (var i=mode_a.length - mode_new.length; i<mode_a.length;i++){
 		var new_tr = document.createElement("tr");
 		new_tr.id = mode_a[i];
-		new_tr.innerHTML = "<td> <h5 id='mode-id"+i+"'>"+mode_a[i]+"</h5> </td> <td> <h4 id='port4-"+i+"'> "+point_path+"</h4> </td> <td> <button class='mode' id='remove"
-		+i+"' onclick='remove_mode_tr(this)'>Del</button> <button onclick='check_each_mode(this)' class='button' id='check2-"+i+"' style='width:80px;float: left; margin-right: 5px;'> Check !</button> </td>";
+		new_tr.innerHTML = "<td> <h5 id='mode-id"+i+"'>"+mode_a[i]+"</h5> </td> <td> <h4 id='port4-"+i+"'> "+point_path+"</h4> </td> <td style='width: 270px;'> <button onclick='check_each_mode(this)' class='button' id='check2-"
+		+i+"' style='width:90px;float: left; margin-right: 10px;'> Check !</button> <button class='mode' id='remove" +i+"' onclick='remove_mode_tr(this)'>Del</button> <button class='diy' id='diy" 
+		+i+"' onclick='draw_diy(this)'>DIY it!</button> </td>";
 		document.getElementById("tb4-2").appendChild(new_tr);
 		ports_select[ports_select.length] = point_path.slice(0);
 	}
@@ -118,6 +108,7 @@ function remove_mode_tr(obj){
 	console.log(mode_a);
 }
 
+// check the operation we click using the input object.
 function check_each_mode(obj){
 	var index = parseInt(obj.parentNode.parentNode.id);
 	var i = mode_a.indexOf(index);
